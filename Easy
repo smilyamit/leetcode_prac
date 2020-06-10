@@ -76,10 +76,100 @@ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807
 
+class Solution:
+    def addTwoNumbers(self, l1, l2, c=0):
+        val = l1.val + l2.val + c
+        c = val // 10
+        current = ListNode(val % 10 ) 
+        
+        if (l1.next != None or l2.next != None or c != 0):
+            if l1.next == None:
+                l1.next = ListNode(0)
+            if l2.next == None:
+                l2.next = ListNode(0)
+            current.next = self.addTwoNumbers(l1.next,l2.next,c)
+        return current     
+
+###########################################################################
+###########################################################################
+
+3. Longest Substring Without Repeating Characters
+Given a string, find the length of the longest substring without repeating characters.
+
+Example 1:
+
+Input: "abcabcbb"
+Output: 3 
+Explanation: The answer is "abc", with the length of 3.
+Example 3:
+
+Input: "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3. 
+             Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+             
+
+In normal testing outside leetcode eg (vscode, repl.it online editor)
+# l=left, r= right (here it work like index), 
+class Solution:
+  def longestSubString(self, s):
+
+     l= 0
+     longest = 0
+     dicts = {}
+     for r, char in enumerate(s):
+       if char in dicts:
+         l = max(l, dicts[char]+1)
+       dicts[char] = r
+       longest = max(r-l+1, longest)
+     return longest
 
 
+a = Solution()
+print(a.longestSubString('abcaa'))
 
 
+In leetcode
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+       
+        '''
+        c a b c a b c b b
+        l 0 0 0 1
+        r 0 1 2 3 4 5 6 7
+          1 2 3 3
+        
+        abcba
+        
+        calculate the length of substring ending at each index
+        find the global maximum
+        
+        l =
+        l of the previous substring OR
+        1 + the index, the current character has last appeared
+        
+        Time O(n)
+        Space O(k)
+        n is the number of characters in the input string
+        k is the number of unique possible characters (i.e. 26 is all lower case letters)
+        '''
+        longest = 0
+        l = 0
+        lib = {}
+        
+        for r,c in enumerate(s):
+            if c in lib:
+                l = max(l, lib[c] + 1)
+            lib[c] = r
+            longest = max(r - l + 1, longest)
+        return longest
+
+########################################################################################
+#######################################################################################
 
 
 
