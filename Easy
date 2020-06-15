@@ -232,6 +232,41 @@ class Solution:
 
 ##########################################################
 ##############################################################
+#Palindrome Number
+Determine whether an integer is a palindrome. 
+An integer is a palindrome when it reads the same backward as forward
+In editor
+def isPalindrome(n):
+    temp = n
+    rev =0
+    rem =0
+    while (n>0):
+        rem = n%10
+        n = n//10
+        rev = rev*10 + rem
+    if rev == temp:
+      return True
+    else:
+      return False
+    
+
+
+print(isPalindrome(120))
+
+In leetcode
+class Solution:
+    def isPalindrome(self, n: int) -> bool:
+        temp = n
+        rev =0
+        rem =0
+        while n>0:
+            rem = n%10
+            n = n//10
+            rev = rev*10 + rem
+        if rev == temp:
+            return True
+        else:
+            return False
 
 
 
