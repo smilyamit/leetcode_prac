@@ -273,7 +273,60 @@ class Solution:
 Intezer to Roman
 Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
+Method-1 (in editor)
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        symbools = [(1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'), (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'), (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')]
+        ans = ''
+        for val, sym in symbools:
+            if num/val:
+                ans += sym* (num//val)
+                num = num%val
+                continue
+        return ans
 
+
+Method-2 (in leetcode)
+class Solution:
+  def intToRoman(self, num: int) -> str:
+      symbools = [(1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'), (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'), (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')]
+      ans = ''
+      for val, sym in symbools:
+          if num/val:
+              ans += sym* (num//val)
+              num = num%val
+              continue
+      return ans
+ 
+ object1 = Solution()
+ output = object1.intToRoman(17)
+ print(output)
+ 
+ #################################################
+ Roamn to intezer
+ in leetcode:
+ class Solution:
+    def romanToInt(self, s):
+        R = ['CM', 'CD', 'XC', 'XL', 'IX', 'IV','M', 'D', 'C', 'L','X','V', 'I']
+        I = [900, 400, 90,40, 9, 4, 1000, 500, 100, 50, 10, 5, 1]
+        
+        n = 0
+        for (r,i) in zip(R,I):
+            n += i * s.count(r)      
+            s = s.replace(r, '')
+        return n
+
+In my editor
+def romanToInt(s):
+      R = ['CM', 'CD', 'XC', 'XL', 'IX', 'IV', 'M', 'D', 'C', 'L', 'X', 'V', 'I']
+      I = [900, 400, 90, 40, 9, 4, 1000, 500, 100, 50, 10, 5, 1]
+      n = 0
+      for (r, i) in zip(R, I):
+          n += i * s.count(r)
+          s = s.replace(r, '')
+      return n
+
+print(romanToInt('XIV'))
 
 
 
