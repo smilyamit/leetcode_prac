@@ -364,7 +364,45 @@ print(strin(strs))
 ####################################################################
 #####################################################################
 
+Valid parentheses (braces)
 
+leetcode
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        h_map = {
+        "{": "}",
+        "(":")",
+        "[":"]"
+        }
+
+        for braces in s:
+            if braces in h_map:
+              stack.append(h_map[braces])
+            elif len(stack)==0 or stack.pop() != braces:
+              return False
+        return len(stack)==0
+        
+ in online editor (repl.it)
+ 
+def paren(s):
+  stack = []
+  h_map = {
+  "{": "}",
+  "(":")",
+  "[":"]"
+}
+
+  for braces in s:
+    if braces in h_map:
+      stack.append(h_map[braces])
+    elif len(stack)==0 or stack.pop() != braces:
+      return False
+  return len(stack)==0
+
+print(paren("(}"))
 
 
 
