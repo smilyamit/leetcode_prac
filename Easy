@@ -328,8 +328,41 @@ def romanToInt(s):
 
 print(romanToInt('XIV'))
 
+#########################################################################################################
+########################################################################################################
 
+Longest Common Prefix
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string
 
+class Solution:
+  def longestCommonPrefix(self, strs):
+      res = ''
+      for s in zip(*strs):
+          if len(set(s)) == 1:
+              res += s[0]
+          else:
+              return res
+      return res
+
+In online editor
+
+strs = ["aca","cba"]
+def strin(strs):
+  res = ''
+  for s in zip(*strs):
+      print(s)
+
+      if len(set(s)) == 1:
+          res += s[0]
+      else:
+        return res
+  return res
+
+print(strin(strs))
+
+####################################################################
+#####################################################################
 
 
 
